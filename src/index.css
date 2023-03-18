@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: "Open sans" sans-serif;
+    color: "white";
+    scroll-behavior: smooth;
+    background-color: black;
+  }
+}
+.about {
+  background-image: url(assets/bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: scroll;
+}
+.chef {
+  background-image: url(assets/bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: scroll;
+}
+
+.award {
+  background-image: url(assets/bg-2.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: scroll;
+}
+
+@media (max-width: 768px) {
+  .award {
+    background-image: url(assets/bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: scroll;
+  }
+}
+
+.contact {
+  background-image: url(assets/bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: scroll;
+}
+
+.footer {
+  background-image: url(assets/bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: scroll;
+}
+
+.loadingSpinnerContainer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 5000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pageContainer {
+  margin-bottom: 10rem;
+}
+
+.loadingSpinner {
+  width: 64px;
+  height: 64px;
+  border: 8px solid;
+  border-color: #00cc66 transparent #00cc66 transparent;
+  border-radius: 50%;
+  animation: spin 1.2s linear infinite;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.hamburger {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  transition: all 0.4s;
+  position: relative;
+}
+
+.hamburger-one,
+.hamburger-two,
+.hamburger-three {
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  top: 0;
+  left: 0;
+  background-color: white;
+  rotate: 0;
+  transition: all 0.4s;
+}
+
+.hamburger-two {
+  transform: translateY(7px);
+}
+.hamburger-three {
+  transform: translateY(14px);
+}
+
+.open {
+  rotate: 90deg;
+}
+.open .hamburger-one {
+  transform: rotate(45deg) translateX(6px) translateY(6px);
+}
+.open .hamburger-two {
+  display: none;
+}
+.open .hamburger-three {
+  transform: rotate(-45deg) translateX(-6px) translateY(6px);
+}
