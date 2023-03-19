@@ -40,47 +40,37 @@ function AddToWishlist({
   const handleWishlist = async () => {
     const userid = doc(db, "users", `${user?.email}`);
 
-    // if (user?.email) {
-    //   await updateDoc(userid, {
-    //     wishlist: arrayUnion({
-    //       id: idMeal,
-    //       name: strMeal,
-    //       image: strMealThumb,
-    //       instruction: strInstructions,
-    //       area: strArea,
-    //       category: strCategory,
-    //     }),
-    //   });
+    try {
+      if (userid) {
+        // Get the user document
+        const userDoc = doc(db, "users", `${user?.email}`);
 
-    if (userid) {
-      // Get the user document
-      const userDoc = doc(db, "users", `${user?.email}`);
+        // Check if the item already exists in the wishlist
+        const snapshot = await getDoc(userid);
+        const wishlist = snapshot.data()?.wishlist || []; // Get the wishlist array or an empty array if it doesn't exist
+        const itemExists = wishlist.some(
+          (item: AddToWishlistProp) => item.id === idMeal
+        );
 
-      // Check if the item already exists in the wishlist
-      const snapshot = await getDoc(userDoc);
-      const wishlist = snapshot.data()?.wishlist || []; // Get the wishlist array or an empty array if it doesn't exist
-      const itemExists = wishlist.some(
-        (item: AddToWishlistProp) => item.id === idMeal
-      );
-
-      if (itemExists) {
-        // If the item already exists, show an error message
-        toast.error("Item already exists in wishlist!");
-      } else {
-        // If the item doesn't exist, add it to the wishlist array
-        await updateDoc(userDoc, {
-          wishlist: arrayUnion({
-            id: idMeal,
-            name: strMeal,
-            image: strMealThumb,
-            instruction: strInstructions,
-            area: strArea,
-            category: strCategory,
-          }),
-        });
-        toast.success("added to Wishlist succesfully");
+        if (itemExists) {
+          // If the item already exists, show an error message
+          toast.error("Item already exists in wishlist!");
+        } else {
+          // If the item doesn't exist, add it to the wishlist array
+          await updateDoc(userid, {
+            wishlist: arrayUnion({
+              id: idMeal,
+              name: strMeal,
+              image: strMealThumb,
+              instruction: strInstructions,
+              area: strArea,
+              category: strCategory,
+            }),
+          });
+          toast.success("added to Wishlist succesfully");
+        }
       }
-    } else {
+    } catch (error) {
       toast.error("Please log in to add to wishlist.");
     }
   };

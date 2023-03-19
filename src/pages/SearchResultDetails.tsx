@@ -2,13 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
-import { AiOutlinePlusSquare } from "react-icons/ai";
 import AddToWishlist from "../components/AddToWishlist";
 
-interface MealProp {}
-
 interface SingleMealProp {
-  meal: MealProp;
+  meal: [];
   idMeal: string;
   strMeal: string;
   strCategory: string;
@@ -59,7 +56,6 @@ function SearchResultDetails() {
   }, []);
 
   //   show more or show less functionality
-
   const [showFullText, setShowFullText] = useState(false);
 
   const handleClick = () => {
@@ -146,7 +142,8 @@ function SearchResultDetails() {
               <p className="mt-5 capitalize text-xl md:text-base">
                 Name: {name}
               </p>
-              <p className="mt-3 capitalize text-xl md:text-base">
+
+              <p className="mt-2 capitalize text-xl md:text-base">
                 Area: {area}
               </p>
               <div className="mt-10 text-center sm:text-start">
@@ -161,10 +158,10 @@ function SearchResultDetails() {
                           key={i}
                           className="border-l-2 py-2 pl-2 border-t-2  border-deep-gray "
                         >
-                          {ings.ing}
+                          {ings.ing || "N/A"}
                         </div>
                         <div className="border-t-2 py-2 border-deep-gray border-r-2 ">
-                          {ings.measure}
+                          {ings.measure || "N/A"}
                         </div>
                       </>
                     ))}

@@ -30,13 +30,14 @@ interface itemProp {
 function SingleMenu() {
   const [loading, setLoading] = useState(true);
   const [items, setItems] = useState<itemProp[]>([]);
+  const mealDb = import.meta.env.VITE_MEALDB_URL;
 
   const { menuitem } = useParams();
 
   const category = async (menuitem: string | undefined) => {
     try {
       const response =
-        await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${menuitem}
+        await fetch(`${mealDb}/api/json/v1/1/search.php?s=${menuitem}
       `);
       const { meals } = await response.json();
 

@@ -2,10 +2,6 @@ import { useRef, useState } from "react";
 import { BsPauseFill, BsFillPlayFill } from "react-icons/bs";
 import video from "../assets/meal.mp4";
 
-interface Ref {
-  useRef: React.MutableRefObject<undefined>;
-}
-
 function Video() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [play, setPlay] = useState(false);
@@ -21,15 +17,8 @@ function Video() {
   };
 
   return (
-    <div className="relative ">
-      <video
-        ref={videoRef}
-        className="h-3/5 object-cover z-10"
-        src={video}
-        controls={false}
-        loop
-        muted
-      />
+    <div className="relative">
+      <video ref={videoRef} src={video} controls={false} loop muted />
       <div className="absolute top-0 w-full h-full bg-black/70 z-20">
         <div className="flex justify-center  h-full items-center">
           <div

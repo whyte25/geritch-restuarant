@@ -2,9 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import Spinner from "../../components/Spinner";
-import { AiOutlinePlusSquare } from "react-icons/ai";
 import AddToWishlist from "../../components/AddToWishlist";
-import { BsEmojiNeutralFill } from "react-icons/bs";
 
 interface SingleMealProp {
   idMeal: string;
@@ -39,13 +37,13 @@ interface SingleMealProp {
 function SingleMeal() {
   const [loading, setLoading] = useState(true);
   const [items, setItems] = useState<SingleMealProp[]>([]);
+  const mealDb = import.meta.env.VITE_MEALDB_URL;
 
   const { name } = useParams();
 
   const fetchMenuDetails = async (name: string | undefined) => {
     try {
-      const response =
-        await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${name}
+      const response = await fetch(`${mealDb}/api/json/v1/1/search.php?s=${name}
       `);
       const { meals } = await response.json();
 
@@ -172,7 +170,10 @@ function SingleMeal() {
               <p className="mt-5 capitalize text-xl md:text-base">
                 Name: {name}
               </p>
-              <p className="mt-3 capitalize text-xl md:text-base">
+              <p className="mt-1 capitalize text-xl md:text-base">
+                Category: {category}
+              </p>
+              <p className="mt-1 capitalize text-xl md:text-base">
                 Area: {area}
               </p>
               <div className="mt-10 text-center sm:text-start">

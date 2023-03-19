@@ -24,6 +24,7 @@ function App() {
         <Navbar />
 
         <ScrollToTop />
+
         <Suspense fallback={<Spinner />}>
           <Routes>
             <Route path="/" element={<Home />} />

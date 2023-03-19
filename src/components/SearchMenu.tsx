@@ -31,25 +31,30 @@ function SearchMenu() {
   const [name, setName] = useState<string>("");
   const [searchItems, setSearchItems] = useState<SearchMenuProp[]>([]);
   const [loading, setLoading] = useState(false);
+  const mealDb = import.meta.env.VITE_MEALDB_URL;
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const searchMeal = async (name?: string) => {
-      setLoading(true);
-      try {
-        const response =
-          await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${name}
-      `);
-        const { meals } = await response.json();
-        setSearchItems(meals);
-        setLoading(false);
-        setName("");
-      } catch (error) {
-        toast.error("could not fetch! try again");
-        setLoading(false);
-      }
-    };
-    searchMeal(name);
+    if (name === "") {
+      toast.error("Pls enter something");
+    } else {
+      const searchMeal = async (name?: string) => {
+        setLoading(true);
+        try {
+          const response =
+            await fetch(`${mealDb}/api/json/v1/1/search.php?s=${name}
+        `);
+          const { meals } = await response.json();
+          setSearchItems(meals);
+          setLoading(false);
+          setName("");
+        } catch (error) {
+          toast.error("could not fetch! try again");
+          setLoading(false);
+        }
+      };
+      searchMeal(name);
+    }
   };
 
   return (

@@ -15,13 +15,12 @@ interface categoriesProp {
 function Menu() {
   const [loading, setLoading] = useState(true);
   const [categories, setCategories] = useState<categoriesProp[]>([]);
+  const mealDb = import.meta.env.VITE_MEALDB_URL;
 
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await fetch(
-          "https://www.themealdb.com/api/json/v1/1/categories.php"
-        );
+        const response = await fetch(`${mealDb}/api/json/v1/1/categories.php`);
 
         const { categories } = await response.json();
         setCategories(categories);

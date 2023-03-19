@@ -1,11 +1,14 @@
 import react, { createContext, useContext, ReactNode, useState } from "react";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+} from "firebase/auth";
 import { auth, db } from "../../firebase.config";
 import { toast } from "react-toastify";
 import { doc, getDoc, serverTimestamp, setDoc } from "firebase/firestore";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { Navigate, useNavigate } from "react-router-dom";
-import type { Dispatch, SetStateAction } from "react"; // import Dispatch type here
+import { useNavigate } from "react-router-dom";
 
 interface ChildrenProp {
   children: ReactNode;
@@ -14,7 +17,7 @@ interface ChildrenProp {
 interface FormDataProp {
   name: string;
   email: string;
-  password: string; // Make password optional
+  password: string;
 }
 
 interface UserAuthContextProp {
@@ -25,12 +28,14 @@ interface UserAuthContextProp {
     name: string,
     formData: any
   ) => void;
+  handleLogin: (email: string, password: string) => void;
   setFormData: React.Dispatch<React.SetStateAction<any>>;
 }
 
 const UserAuthContext = createContext<UserAuthContextProp | null>({
   handleGoogleOAuth: () => {},
   handleRegistration: () => {},
+  handleLogin: () => {},
   setFormData: () => {},
 });
 
@@ -55,15 +60,18 @@ export const UserAuthContextProvider = ({ children }: ChildrenProp) => {
           email: user.email,
           timestamp: serverTimestamp(),
         });
+        navigate("/");
         toast.success("registration successfull");
+      } else {
+        navigate("/");
+        toast.success("Login successfull");
       }
-      navigate("/");
-      toast.success("Login successfull");
     } catch (error) {
       toast.error("Something went wrong");
     }
   };
 
+  // Sign in new User
   const handleRegistration = async (
     email: string,
     password: string,
@@ -88,7 +96,7 @@ export const UserAuthContextProvider = ({ children }: ChildrenProp) => {
 
       const formDataCopy = { ...formData };
       delete formDataCopy.password;
-      await setDoc(doc(db, "users", user.uid), formDataCopy);
+      await setDoc(doc(db, "users", `${user?.email}`), formDataCopy);
 
       navigate("/");
     } catch (error) {
@@ -96,9 +104,30 @@ export const UserAuthContextProvider = ({ children }: ChildrenProp) => {
     }
   };
 
+  // Login User
+  const handleLogin = async (email: string, password: string) => {
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
+      toast.success("Login successfully");
+      navigate("/");
+    } catch (error) {
+      toast.error("Could not Login please check user credentials");
+    }
+  };
+
   return (
     <UserAuthContext.Provider
-      value={{ handleGoogleOAuth, handleRegistration, setFormData }}
+      value={{
+        handleGoogleOAuth,
+        handleRegistration,
+        setFormData,
+        handleLogin,
+      }}
     >
       {children}
     </UserAuthContext.Provider>

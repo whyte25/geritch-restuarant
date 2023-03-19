@@ -21,7 +21,7 @@ function ForgottenPassword() {
 
   return (
     <>
-      <div className="flex justify-center items-center h-screen">
+      <div className="flex justify-center items-center h-[90vh]">
         <div className="w-[40%] md:w-[70%] sm:w-[90%] h-fit px-6 rounded-md bg-black text-white ">
           <div className="py-16 w-full">
             <h1 className="text-3xl sm:text-xl font-bold capitalize">

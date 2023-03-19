@@ -1,11 +1,8 @@
 import { ChangeEvent, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import GoogleOAuth from "../components/GoogleOAuth";
-import ForgottenPassword from "./ForgottenPassword";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase.config";
-import { toast } from "react-toastify";
+import { useAuth } from "../context/UserAuthContext";
 
 interface FormDataProp {
   email: string;
@@ -19,24 +16,13 @@ function Register() {
     password: "",
   });
 
-  const navigate = useNavigate();
+  const { handleLogin } = useAuth();
 
   const { password, email } = formData;
 
-  const handleSubmit = async (e: ChangeEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
-    try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password as string
-      );
-      const user = userCredential.user;
-      toast.success("login successfully");
-      navigate("/");
-    } catch (error) {
-      toast.error("Could not Login please check user credentials");
-    }
+    handleLogin(email, password);
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
