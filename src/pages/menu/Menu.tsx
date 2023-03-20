@@ -3,7 +3,6 @@ import { toast } from "react-toastify";
 import Loader from "../../components/Loader";
 import MenuItem from "../../components/MenuItem";
 import SearchMenu from "../../components/SearchMenu";
-import SingleMenu from "./SingleMenu";
 
 interface categoriesProp {
   idCategory: string;
