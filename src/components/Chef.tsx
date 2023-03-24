@@ -5,14 +5,14 @@ import spoon from "../assets/spoon.png";
 
 function Chef() {
   return (
-    <div id="chef" className="chef  flex justify-center py-10 sm:px-6">
-      <div className="flex w-5/6  md:w-full md:flex-col-reverse justify-center  gap-5 items-center">
+    <div id="chef" className="chef   py-10 sm:px-6">
+      <div className="flex justify-center w-full  md:w-full md:flex-col-reverse gap-5 items-center">
         <img
           src={chef}
           alt={chef}
-          className="w-[400px] lg:w-[300px] md:mt-16"
+          className="w-[400px] lg:w-[300px] md:mt-16 "
         />
-        <div className="flex flex-col   md:items-center w-2/4 lg:w-full space-y-10 lg:space-y-4">
+        <div className="flex flex-col max-w-sm   md:items-center  lg:w-full md:max-w-lg space-y-10 lg:space-y-4">
           <div className="flex flex-col ">
             <h1 className="font-serif text-deep-gray font-bold  text-xl">
               {" "}
@@ -23,7 +23,7 @@ function Chef() {
           <h3 className="text-cream capitalize mt-3 font-serif font-bold text-5xl lg:text-3xl sm:text-2xl">
             what we believe in
           </h3>
-          <p className="indent-9  text-deep-gray w-4/5 lg:5/6 sm:w-full text-sm relative">
+          <p className="indent-9  text-deep-gray  lg:5/6  md:w-full text-sm relative">
             <img
               src={quote}
               alt={quote}

@@ -37,7 +37,7 @@ function SingleMenu() {
   const category = async (menuitem: string | undefined) => {
     try {
       const response =
-        await fetch(`${mealDb}/api/json/v1/1/search.php?s=${menuitem}
+        await fetch(`${mealDb}/api/json/v1/1/filter.php?c=${menuitem}
       `);
       const { meals } = await response.json();
 
