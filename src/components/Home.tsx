@@ -11,6 +11,8 @@ import Chef from "./Chef";
 import Award from "./Award";
 import Gallery from "./Gallery";
 import Contact from "./Contact";
+import { IKImage } from "imagekitio-react";
+import { uRLEndpoint } from "../context/UserAuthContext";
 
 function Home() {
   return (
@@ -23,7 +25,18 @@ function Home() {
                 {" "}
                 chase the new flavor
               </h5>
-              <img src={spoon} className="w-6 mt-1" alt="spoon" />
+              <IKImage
+                urlEndpoint={uRLEndpoint}
+                path="spoon.png"
+                lqip={{ active: true, quality: 20 }}
+                transformation={[
+                  {
+                    width: "800",
+                  },
+                ]}
+                className="w-6 mt-1"
+                alt="spoon"
+              />
             </div>
             <h3 className="font-serif text-cream font-bold  text-7xl lg:text-4xl leading-[5.5rem] capitalize">
               the key to fine dining
@@ -37,8 +50,14 @@ function Home() {
               <Link to="/menu">Explore Menu</Link>
             </Button>
           </div>
-          <img
-            src={image}
+          <IKImage
+            urlEndpoint={uRLEndpoint}
+            path="welcome.png"
+            transformation={[
+              {
+                width: "800",
+              },
+            ]}
             alt="khloe"
             className="w-2/6 sm:w-[80%] object-cover"
           />

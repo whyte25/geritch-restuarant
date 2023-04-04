@@ -1,10 +1,11 @@
-import React from "react";
+import { IKImage } from "imagekitio-react";
 import {
   AiOutlineFacebook,
   AiOutlineInstagram,
   AiOutlineTwitter,
 } from "react-icons/ai";
-import spoon from "../assets/spoon.png";
+import { uRLEndpoint } from "../context/UserAuthContext";
+
 import Button from "./Button";
 
 const date = new Date().getFullYear().toString();
@@ -15,7 +16,18 @@ function Footer() {
       <div className="flex bg-black flex-col items-center  w-4/6 space-y-5 sm:space-y-2 py-5   rounded-md md:w-5/6 ">
         <div className="flex flex-col items-center space-y-2  justify-center">
           <h3 className="flex  font-bold font-serif text-base">Newsletter</h3>
-          <img src={spoon} className="w-6 mt-1 " alt="spoon" />
+          <IKImage
+            urlEndpoint={uRLEndpoint}
+            path="spoon.png"
+            lqip={{ active: true, quality: 20 }}
+            transformation={[
+              {
+                width: "800",
+              },
+            ]}
+            className="w-6 mt-1 "
+            alt="spoon"
+          />
           <h1 className="font-serif text-cream font-bold  text-5xl lg:text-3xl sm:text-base">
             {" "}
             Subscribe To Our Newsletter
@@ -50,7 +62,17 @@ function Footer() {
             others.”{" "}
           </p>
           <div className="flex flex-col items-center">
-            <img src={spoon} alt={spoon} />
+            <IKImage
+              urlEndpoint={uRLEndpoint}
+              path="spoon.png"
+              lqip={{ active: true, quality: 20 }}
+              transformation={[
+                {
+                  width: "800",
+                },
+              ]}
+              alt={"spoon"}
+            />
             <div className="flex mt-5 space-x-2">
               <AiOutlineFacebook style={{ width: "34px", height: "34px" }} />
               <AiOutlineTwitter style={{ width: "34px", height: "34px" }} />

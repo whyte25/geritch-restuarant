@@ -11,20 +11,20 @@
   }
 }
 .about {
-  background-image: url(assets/bg.png);
+  background-image: url(https://ik.imagekit.io/ltrteacsu/tr:w-2400/bg.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: scroll;
 }
 .chef {
-  background-image: url(assets/bg.png);
+  background-image: url(https://ik.imagekit.io/ltrteacsu/tr:w-2400/bg.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: scroll;
 }
 
 .award {
-  background-image: url(assets/bg-2.png);
+  background-image: url(https://ik.imagekit.io/ltrteacsu/tr:w-2400/BG-2.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: scroll;
@@ -32,7 +32,7 @@
 
 @media (max-width: 768px) {
   .award {
-    background-image: url(assets/bg.png);
+    background-image: url(https://ik.imagekit.io/ltrteacsu/tr:w-2400/bg.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: scroll;
@@ -40,14 +40,14 @@
 }
 
 .contact {
-  background-image: url(assets/bg.png);
+  background-image: url(https://ik.imagekit.io/ltrteacsu/tr:w-2400/bg.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: scroll;
 }
 
 .footer {
-  background-image: url(assets/bg.png);
+  background-image: url(https://ik.imagekit.io/ltrteacsu/tr:w-2400/bg.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: scroll;

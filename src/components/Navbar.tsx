@@ -1,10 +1,10 @@
 import { useRef, useState, useEffect } from "react";
-import { gsap } from "gsap";
-import logo from "../assets/gericht.png";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../../firebase.config";
 import { signOut } from "firebase/auth";
 import SideBar from "./SideBar";
+import { uRLEndpoint } from "../context/UserAuthContext";
+import { IKImage } from "imagekitio-react";
 
 function Navbar() {
   const navRef = useRef<HTMLDivElement>(null);
@@ -27,20 +27,6 @@ function Navbar() {
     return unsubscribe;
   }, []);
 
-  useEffect(() => {
-    let ctx = gsap.context(() => {
-      navRef.current,
-        {
-          duration: 1,
-          y: "-100%",
-          stagger: 0.5,
-          ease: "power2.in",
-        };
-    });
-
-    return () => ctx.revert();
-  }, []);
-
   const handleLogout = () => {
     signOut(auth);
     navigate("/");
@@ -53,7 +39,18 @@ function Navbar() {
       className="flex py-8 px-10 sm:px-5 text-white items-center justify-between"
     >
       <Link to="/">
-        <img src={logo} className="w-32  object-cover" alt="logo" />
+        <IKImage
+          urlEndpoint={uRLEndpoint}
+          path="gericht.png"
+          lqip={{ active: true, quality: 20 }}
+          transformation={[
+            {
+              width: "1800",
+            },
+          ]}
+          className="w-32  object-cover"
+          alt="logo"
+        />
       </Link>
 
       <button

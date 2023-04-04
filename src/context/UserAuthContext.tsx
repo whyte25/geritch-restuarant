@@ -32,6 +32,9 @@ interface UserAuthContextProp {
   setFormData: React.Dispatch<React.SetStateAction<any>>;
 }
 
+// imagekit url endpoint
+export const uRLEndpoint = "https://ik.imagekit.io/ltrteacsu/";
+
 const UserAuthContext = createContext<UserAuthContextProp | null>({
   handleGoogleOAuth: () => {},
   handleRegistration: () => {},

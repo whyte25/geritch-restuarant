@@ -1,5 +1,5 @@
-import glass from "../assets/findus.png";
-import spoon from "../assets/spoon.png";
+import { IKImage } from "imagekitio-react";
+import { uRLEndpoint } from "../context/UserAuthContext";
 import Button from "./Button";
 
 function Contact() {
@@ -13,7 +13,18 @@ function Contact() {
                 {" "}
                 Contact
               </h1>
-              <img src={spoon} className="w-6 mt-1 " alt="spoon" />
+              <IKImage
+                urlEndpoint={uRLEndpoint}
+                path="spoon.png"
+                lqip={{ active: true, quality: 20 }}
+                transformation={[
+                  {
+                    width: "800",
+                  },
+                ]}
+                className="w-6 mt-1 "
+                alt="spoon"
+              />
             </div>
             <h3 className="text-cream capitalize mt-2 font-serif font-bold text-4xl  sm:text-2xl">
               Find Us
@@ -34,10 +45,16 @@ function Contact() {
           </Button>
         </div>
 
-        <img
-          src={glass}
-          alt={glass}
-          className="w-[400px] lg:w-[300px] md:w-[200px] md:h-[400px] object-cover"
+        <IKImage
+          urlEndpoint={uRLEndpoint}
+          path="findus.png"
+          lqip={{ active: true, quality: 20 }}
+          transformation={[
+            {
+              width: "800",
+            },
+          ]}
+          className="w-[400px] lg:w-[300px] md:w-[200px] sm:w-[260px] md:h-[400px] object-cover"
         />
       </div>
     </div>

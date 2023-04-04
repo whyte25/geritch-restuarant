@@ -1,5 +1,5 @@
-import cocktail from "../assets/menu.png";
-import spoon from "../assets/spoon.png";
+import { IKImage } from "imagekitio-react";
+import { uRLEndpoint } from "../context/UserAuthContext";
 import Button from "./Button";
 import data from "./data";
 
@@ -7,7 +7,18 @@ function Cocktail() {
   return (
     <div className="flex flex-col justify-center items-center w-full py-10">
       <div className="flex flex-col-reverse items-center">
-        <img src={spoon} className="w-6 mt-1 " alt="spoon" />
+        <IKImage
+          urlEndpoint={uRLEndpoint}
+          path="spoon.svg"
+          lqip={{ active: true, quality: 20 }}
+          transformation={[
+            {
+              width: "800",
+            },
+          ]}
+          className="w-6 mt-1 "
+          alt="spoon"
+        />
         <h5 className="font-serif  text-white capitalize font-bold text-normal sm:text-sm">
           {" "}
           menu that fits your palatte{" "}
@@ -36,7 +47,18 @@ function Cocktail() {
             </div>
           ))}
         </div>
-        <img src={cocktail} alt={cocktail} className="w-56 mx-10" />
+        <IKImage
+          urlEndpoint={uRLEndpoint}
+          path="menu.png"
+          lqip={{ active: true, quality: 20 }}
+          transformation={[
+            {
+              width: "800",
+            },
+          ]}
+          alt={"cocktail"}
+          className="w-56 mx-10"
+        />
         <div className="flex flex-col ">
           <h3 className="font-serif text-xl font-semibold mb-5 text-center">
             coctails

@@ -1,6 +1,5 @@
 import { useRef, useState } from "react";
 import { BsPauseFill, BsFillPlayFill } from "react-icons/bs";
-import video from "../assets/meal.mp4";
 
 function Video() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -18,7 +17,13 @@ function Video() {
 
   return (
     <div className="relative">
-      <video ref={videoRef} src={video} controls={false} loop muted />
+      <video
+        ref={videoRef}
+        src="https://ik.imagekit.io/ltrteacsu/tr:w-1400/meal.mp4"
+        controls={false}
+        loop
+        muted
+      />
       <div className="absolute top-0 w-full h-full bg-black/70 z-20">
         <div className="flex justify-center  h-full items-center">
           <div
