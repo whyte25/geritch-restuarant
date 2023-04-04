@@ -45,16 +45,16 @@ function Footer() {
           <Button>Subscribe</Button>
         </form>
       </div>
-      <div className="flex md:flex-col  items-start md:items-center justify-center space-x-10  md:space-x-0 md:space-y-10 my-10 w-full">
-        <div className="flex flex-col gap-5 justify-center items-center text-sm text-deep-gray ">
-          <h3 className="font-serif font-bold">Contact Us</h3>
+      <div className="flex md:flex-col  items-start md:items-center justify-between  md:space-y-10 my-10 min-w-fit md:w-full">
+        <div className="flex flex-1 flex-col gap-5 justify-center items-center  text-sm text-deep-gray ">
+          <h3 className="font-serif text-xl font-bold">Contact Us</h3>
           <p>9 W 53rd St, New York, NY 10019, USA </p>
           <div className="">
             <p> +1 212-344-1230 </p>
             <p>+1 212-555-1230</p>
           </div>
         </div>
-        <div className="flex flex-col items-center text-sm text-deep-gray gap-5">
+        <div className="flex flex-1 flex-col items-center text-sm text-deep-gray gap-5">
           <h3 className="font-serif font-bold text-4xl text-cream">GERICHT</h3>
           <p className="md:w-5/6 sm:w--[90%] text-center ">
             {" "}
@@ -71,6 +71,7 @@ function Footer() {
                   width: "800",
                 },
               ]}
+              className="w-6 mt-1 "
               alt={"spoon"}
             />
             <div className="flex mt-5 space-x-2">
@@ -83,7 +84,7 @@ function Footer() {
             {date} Geritche. All Rights reserved
           </small>
         </div>
-        <div className="flex flex-col items-center text-deep-gray gap-5 text-sm">
+        <div className="flex flex-1 flex-col items-center text-deep-gray gap-5 text-sm">
           <h3 className="font-serif font-bold text-xl"> Working Hours</h3>
           <p>
             <span className="block"> Monday-Friday: </span>
